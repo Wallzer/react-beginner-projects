@@ -1,5 +1,5 @@
 import './index.scss';
-
+import React from 'react';
 const questions = [
   {
     title: 'React - это ... ?',
@@ -22,37 +22,64 @@ const questions = [
   },
 ];
 
-function Result() {
+function Result({score}) {
   return (
     <div className="result">
       <img src="https://cdn-icons-png.flaticon.com/512/2278/2278992.png" />
-      <h2>Вы отгадали 3 ответа из 10</h2>
+      <h2>Вы отгадали {score} ответа из 10</h2>
       <button>Попробовать снова</button>
     </div>
   );
 }
 
 function Game() {
+    const [open, setOpen] = React.useState(false)
+    const [currentQuestion, setCurrent] = React.useState(0)
+    const maxlenght = questions.length
+    const [score,setScore] = React.useState(0)
+
+    let count = 0;
+    function questionUpdate(x){
+        if (x===questions[currentQuestion].correct){
+            setScore(score+1);
+            setCurrent(currentQuestion+1);
+            count++;
+        }else if (count===maxlenght) {
+
+        }else{
+            setCurrent(currentQuestion+1)
+            count++
+
+        }
+
+    }
+
+
+
+
   return (
     <>
       <div className="progress">
         <div style={{ width: '50%' }} className="progress__inner"></div>
       </div>
-      <h1>Что такое useState?</h1>
+      <h1>{questions[currentQuestion].title}</h1>
       <ul>
-        <li>Это функция для хранения данных компонента</li>
-        <li>Это глобальный стейт</li>
-        <li>Это когда на ты никому не нужен</li>
+        <li onClick={()=>questionUpdate(0)}>{questions[currentQuestion].variants[0]}</li>
+        <li onClick={()=>questionUpdate(1)}>{questions[currentQuestion].variants[1]}</li>
+        <li onClick={()=>questionUpdate(2)}>{questions[currentQuestion].variants[2]}</li>
+
       </ul>
     </>
   );
 }
 
 function App() {
+
+
   return (
     <div className="App">
-      <Game />
-      {/* <Result /> */}
+        {open && <Game />}
+        {!open && <Result />}
     </div>
   );
 }
