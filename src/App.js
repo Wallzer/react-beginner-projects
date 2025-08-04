@@ -37,7 +37,9 @@ function Game() {
     const [currentQuestion, setCurrent] = React.useState(0)
     const maxlenght = questions.length
     const [score,setScore] = React.useState(0)
-
+    function getScore() {
+        return score;
+    }
     let count = 0;
     function questionUpdate(x){
         if (x===questions[currentQuestion].correct){
@@ -76,10 +78,11 @@ function Game() {
 function App() {
 
 
+
   return (
     <div className="App">
-        {open && <Game />}
-        {!open && <Result />}
+        <Game />
+         <Result score={score} />
     </div>
   );
 }
