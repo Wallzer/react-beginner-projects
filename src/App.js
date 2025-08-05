@@ -22,7 +22,7 @@ const questions = [
   },
 ];
 
-function Result({ score }) {
+function Result({ score,restartQuiz }) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ function Result({ score }) {
     <div className={`result ${visible ? 'show' : ''}`}>
       <img src="https://cdn-icons-png.flaticon.com/512/2278/2278992.png" alt="result" />
       <h2>Вы отгадали {score} ответа из {questions.length}</h2>
-      <button>Попробовать снова</button>
+      <button onClick={restartQuiz}>Попробовать снова</button>
     </div>
   );
 }
@@ -61,8 +61,6 @@ function Game({setCount,count,currentQuestion,setScore,score,setCurrent,maxlengh
     }
 
 
-
-
   return (
     <>
       <div className="progress">
@@ -85,9 +83,14 @@ function App() {
     const maxlenght = questions.length
     const [score,setScore] = React.useState(0)
     const [count,setCount] = React.useState(0)
+  const restartQuiz = () => {
+    setCurrent(0);
+    setScore(0);
+    setCount(0);
+  };
   return (
     <div className="App">
-        {count===maxlenght ? (<Result score={score} />):
+        {count===maxlenght ? (<Result restartQuiz={restartQuiz} score={score} />):
         (<Game setCount={setCount} count={count} currentQuestion={currentQuestion} score={score} setScore={setScore} setCurrent={setCurrent} maxlenght={maxlenght} />)}
 
     </div>
