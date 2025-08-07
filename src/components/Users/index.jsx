@@ -29,6 +29,7 @@ export const Users = ({ items, isLoading, searchValue, onChangeSearchValue,resul
                         .filter(obj => {
                             const fullName = (obj.first_name + obj.last_name).toLowerCase();
                             return (
+
                                 fullName.includes(searchValue.toLowerCase()) ||
                                 obj.email.toLowerCase().includes(searchValue.toLowerCase())
                             );

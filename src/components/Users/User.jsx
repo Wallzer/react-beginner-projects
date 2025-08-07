@@ -1,7 +1,6 @@
 import React from 'react';
 
-export const User = ({ id, email, firstName, lastName, avatar,setCount,count }) => {
-  const [isToggled, setIsToggled] = React.useState(false);
+export const User = ({ id, email, firstName, lastName, avatar,onClickInvite,isInvited }) => {
 
   return (
     <li>
@@ -20,16 +19,8 @@ export const User = ({ id, email, firstName, lastName, avatar,setCount,count }) 
 
      <img
     className="action"
-    onClick={() => {
-      setIsToggled(!isToggled);
-      if (!isToggled) {
-        setCount(count + 1);
-      } else {
-        setCount(count - 1);
-      }
-      console.log(count);
-    }}
-    src={`/assets/${isToggled ? 'minus' : 'plus'}.svg`}
+    onClick={onClickInvite}
+    src={`/assets/${isInvited ? 'minus' : 'plus'}.svg`}
     alt="Action"
   />
 
