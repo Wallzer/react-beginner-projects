@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Skeleton } from './Skeleton';
 import { User } from './User';
 
-export const Users = ({ items, isLoading, searchValue, onChangeSearchValue }) => {
+export const Users = ({ items, isLoading, searchValue, onChangeSearchValue,results, setResults,setCount,count }) => {
+
     return (
         <>
             <div className="search">
@@ -23,7 +24,7 @@ export const Users = ({ items, isLoading, searchValue, onChangeSearchValue }) =>
                     <Skeleton />
                 </div>
             ) : (
-                <ul className="users-list">
+                <ul className="users-list ">
                     {items
                         .filter(obj => {
                             const fullName = (obj.first_name + obj.last_name).toLowerCase();
@@ -31,6 +32,7 @@ export const Users = ({ items, isLoading, searchValue, onChangeSearchValue }) =>
                                 fullName.includes(searchValue.toLowerCase()) ||
                                 obj.email.toLowerCase().includes(searchValue.toLowerCase())
                             );
+
                         })
                         .map(obj => (
                             <User
@@ -40,12 +42,15 @@ export const Users = ({ items, isLoading, searchValue, onChangeSearchValue }) =>
                                 email={obj.email}
                                 avatar={obj.avatar}
                                 id={obj.id}
+                                setCount={setCount}
+                                count={count}
+                                toogle={obj.toogle}
                             />
                         ))
                     }
                 </ul>
             )}
-            <button className="send-invite-btn">Отправить приглашение</button>
+            <button onClick={()=>setResults(!results)} className="send-invite-btn">Отправить приглашение</button>
         </>
     );
 };
