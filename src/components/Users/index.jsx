@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { Skeleton } from './Skeleton';
 import { User } from './User';
 
-export const Users = ({ items, isLoading, searchValue, onChangeSearchValue,results, setResults,setCount,count }) => {
+export const Users = ({ items, isLoading, searchValue, onChangeSearchValue,results, setResults,invites,onClickInvite }) => {
 
     return (
         <>
@@ -43,9 +43,9 @@ export const Users = ({ items, isLoading, searchValue, onChangeSearchValue,resul
                                 email={obj.email}
                                 avatar={obj.avatar}
                                 id={obj.id}
-                                setCount={setCount}
-                                count={count}
                                 toogle={obj.toogle}
+                                invites={invites}
+                                onClickInvite={onClickInvite}
                             />
                         ))
                     }

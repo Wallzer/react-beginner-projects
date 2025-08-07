@@ -6,10 +6,10 @@ import { Users } from './components/Users';
 function App() {
     const [users, setUsers] = React.useState([]);
     const [isLoading, setLoading] = React.useState(true);
-    const [searchValue, setSearchValue] = React.useState(''); // исправлено начальное значение на пустую строку
+    const [searchValue, setSearchValue] = React.useState('');
     const [results, setResults] = React.useState(true);
     const [count, setCount] = React.useState(0);
-    const [invites, setInvites] = React.useState([1]);
+    const [invites, setInvites] = React.useState([]);//кажется тут должен быть 0 чтобы оно считало правильно, но это не точно
 
     function onClickInvite(id) {
         // let temp = []
@@ -23,8 +23,11 @@ function App() {
         //         }
         //     }
         // }
-        
-        setInvites(prev => prev.filter(i => i !== id));
+        if (invites.includes(id)) {
+            setInvites(prev => prev.filter(i => i !== id));
+        }else {setInvites([...invites, id]);}
+        // console.log(invites);
+        // console.log(invites.length);
 
     }
 
@@ -53,8 +56,9 @@ function App() {
              searchValue={searchValue} onChangeSearchValue={onChangeSearchValue}
                 results={results} setResults={setResults}
                 count={count} setCount={setCount}
-                invites={invites} setInvites={setInvites} />
+                invites={invites} setInvites={setInvites}
+                onClickInvite={onClickInvite} />
 
-  </div>) : (<Success results={results} setResult={setResults} count={count} setCount={setCount} />);}
+  </div>) : (<Success results={results} setResult={setResults} count={invites.length} setInvites={setInvites} />);}
 
 export default App;

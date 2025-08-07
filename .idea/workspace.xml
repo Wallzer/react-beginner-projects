@@ -7,6 +7,7 @@
     <list default="true" id="d1c4031f-b569-4388-9784-4cdbe38374b1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Success.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Success.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Users/User.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Users/User.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Users/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Users/index.jsx" afterDir="false" />
     </list>
@@ -87,7 +88,8 @@
       <workItem from="1754287545341" duration="3879000" />
       <workItem from="1754373515281" duration="327000" />
       <workItem from="1754459995508" duration="8064000" />
-      <workItem from="1754547502989" duration="2839000" />
+      <workItem from="1754547502989" duration="3522000" />
+      <workItem from="1754564254670" duration="2222000" />
     </task>
     <servers />
   </component>
